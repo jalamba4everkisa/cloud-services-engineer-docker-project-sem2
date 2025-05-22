@@ -14,7 +14,8 @@ RUN addgroup -g 1000 nginxgroup && \
 RUN touch /var/run/nginx.pid && \
     chown -R nginxuser:nginxgroup /var/run/nginx.pid && \
     chown -R nginxuser:nginxgroup /usr/share/nginx/html
-COPY --from=builder --chown=nginx:nginx /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder --chown=nginx:nginx /app/dist /usr/share/nginx/html/momo-store
 EXPOSE 80
 USER nginxuser
 CMD ["nginx","-g","daemon off;"]

@@ -1,0 +1,19 @@
+services:
+  backend:
+    container_name: backend
+    build: ./backend/
+    ports:
+      - "8081:8081"
+    networks:
+      - momo-network
+  frontend:
+    container_name: frontend
+    build: ./frontend/
+    ports:
+      - "80:80" 
+    networks:
+      - momo-network
+
+networks:
+  momo-network:
+    driver: bridge
