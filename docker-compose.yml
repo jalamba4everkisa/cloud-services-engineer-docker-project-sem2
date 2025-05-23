@@ -13,7 +13,8 @@ services:
       - "80:80" 
     networks:
       - momo-network
-
+    depends_on:
+      - backend
 networks:
   momo-network:
     driver: bridge

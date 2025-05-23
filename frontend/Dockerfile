@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+ENV VUE_APP_API_URL=/api
 RUN npm run build
 
 FROM nginx:stable-alpine
