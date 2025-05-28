@@ -20,6 +20,10 @@ services:
         reservations:
           memory: 256M
     restart: on-failure
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
   frontend:
     container_name: frontend
@@ -47,6 +51,10 @@ services:
     volumes:
       - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     restart: on-failure
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
 
 networks:
   momo-network:
