@@ -4,6 +4,7 @@ COPY . .
 RUN go mod download && CGO_ENABLED=0 go build -o backend ./cmd/api/
 
 FROM alpine:3.21.3
+RUN apk add --no-cache curl
 RUN adduser -D user
 USER user
 COPY --from=builder /app/backend /bin/backend
